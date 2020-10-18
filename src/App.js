@@ -4,8 +4,6 @@ import {Route, BrowserRouter as Router, Link} from 'react-router-dom';
 import bbva from './images/bbva.jpg';
 import citibanamex from './images/citibanamex.png';
 import santander from './images/santander.png';
-import Validacion from './pages/Validacion';
-import Boton from './components/Boton';
 import Loading from './components/Loading';
 
 
@@ -34,10 +32,7 @@ function App() {
   }
   else {
   return (
-    <Router>
       <div className="App">
-      <Route exact path="/Validacion" component={Validacion}></Route>
-      
         <h1>Selecciona tu tarjeta</h1>
         <center>
           <button className="tarjeta">
@@ -71,15 +66,6 @@ function App() {
         </center>
         <p>/////////////////////////</p>
         <center>
-                    <h3>Estamos verificando tu identidad</h3>
-                    
-                    <p>Espera un momento</p>
-                    
-                </center>
-        
-        <p>/////////////////////////</p>
-        
-        <center>
           <h1>El proceso ha finalizado con éxito</h1>
           <b>Cuota mensual: </b>
           <br></br>
@@ -87,7 +73,6 @@ function App() {
           <h3>¡Gracias por completar tu solicitud con nosotros!</h3>
         </center>
     </div>
-    </Router>
   );
 }
 }
