@@ -61,6 +61,7 @@ function App() {
             </center>
         </div>
         <hr></hr>
+        <p><input type="radio"></input> He leído y acepto la <a href="https://www.bbva.com/es/politica-proteccion-datos-personales/" target='_blank'>Política de Proteccion de Datos Personales</a> BBVA</p>
         <center>
           <button className="boton" onClick={()=>cambiarEstado()}>Continuar</button>
         </center>
