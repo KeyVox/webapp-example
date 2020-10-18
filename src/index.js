@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App'; // a lo mejor aquí va App
-import DatosP from './DatosPersonales';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

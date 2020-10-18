@@ -1,6 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './css/App.css';
+import {Route, BrowserRouter as Router, Link} from 'react-router-dom';
+import bbva from './images/bbva.jpg';
+import citibanamex from './images/citibanamex.png';
+import santander from './images/santander.png';
+import Validacion from './pages/Validacion';
+import Boton from './components/Boton';
+import Loading from './components/Loading';
+
 
 // Importar componentes
 //import TArea from './components/TArea'
@@ -11,12 +18,45 @@ function App() {
   var sApellido;
   var Ciudad;
   var Costo;
+  const [loading, setLoading] = useState(false);
+  
+  const cambiarEstado=()=>{
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+    }, 5000);
+  }
+
+  if(loading) {
+    return (
+      <Loading />
+    )
+  }
+  else {
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
+      <Route exact path="/Validacion" component={Validacion}></Route>
       
+        <h1>Selecciona tu tarjeta</h1>
+        <center>
+          <button className="tarjeta">
+            <img src={bbva}></img>Bancomer
+          </button>
+          <br></br><br></br>
+          <button className="tarjeta">
+            <img src={citibanamex}></img>Citibanamex
+          </button>
+          <br></br><br></br>
+          <button className="tarjeta">
+            <img src={santander}></img>Santander
+          </button>
+        </center>
+          
+        <p>/////////////////////////</p>
         <h1>Cuenta bancaria</h1>
         <p>Ingresa la cuenta donde quieres domiciliar tus pagos:</p>
-          <div className="con-cuenta">
+          <div className="ccuenta">
             <center>
             <input type="text" value="0000" className="cuenta" disabled></input>
             <input type="text" value="0000" className="cuenta" disabled></input>
@@ -27,31 +67,29 @@ function App() {
         </div>
         <hr></hr>
         <center>
-          <p><input type="radio"></input>He leído y acepto la <a href="https://www.bbva.com/es/politica-proteccion-datos-personales/" target="_blank">política de protección de datos personales</a> de BBVA</p>
-          <input type="button" value="Continuar" className="botones" disabled></input>
-        </center>
-        <h1>El proceso ha sido finalizado con éxito</h1>
-        <p>/////////////////////////</p>
-        <h1>Confirmación de datos</h1>
-        <center>
-          <b>Nombre:</b> <br></br><input type="text" value={Nombre} className="datos" maxlength="15" disabled></input>
-          <br></br><br></br>
-          <b>Primer apellido: </b><br></br><input type="text" value={pApellido} className="datos" maxlength="15" disabled></input>
-          <br></br><br></br>
-          <b>Segundo apellido: </b><br></br><input type="text" value={sApellido} className="datos" maxlength="15" disabled></input>
-          <br></br><br></br>
-          <b>Ciudad:</b> <br></br><input type="text" value={Ciudad} className="datos" maxlength="15" disabled></input>
+          <button className="boton" onClick={()=>cambiarEstado()}>Continuar</button>
         </center>
         <p>/////////////////////////</p>
-        <h1>El proceso ha finalizado con éxito</h1>
         <center>
+                    <h3>Estamos verificando tu identidad</h3>
+                    
+                    <p>Espera un momento</p>
+                    
+                </center>
+        
+        <p>/////////////////////////</p>
+        
+        <center>
+          <h1>El proceso ha finalizado con éxito</h1>
           <b>Cuota mensual: </b>
           <br></br>
           <input type="text" value={Costo} className="datos" disabled></input>
           <h3>¡Gracias por completar tu solicitud con nosotros!</h3>
         </center>
     </div>
+    </Router>
   );
+}
 }
 
 export default App;
